@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D Pyramid Challenge</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>3D Pyramid Challenge</h1>
+    </header>
+    <div id="container">
+        <div class="myDiv">
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(() => {
+
+            for (let z = 0; z < 10; z++) {
+                let myContainer = $('<div></div');
+                let shift = z * 0.3 + 'rem';
+
+                $('.myDiv').each(() => {
+                    $('span').css('margin-left', 0);
+                    $(myContainer).css({ 'position': 'absolute', 'display': 'block', 'top': '30rem', 'z-index': z, 'font-size': z * 12 + 80 + 'px', 'color': 'rgb(' + z * 20 + ',' + z * 20 + ',' + z * 20 + ')','transform':'rotate(' + z * 2 + 'deg)' });
+
+                });
+
+
+                $('.myDiv').append(myContainer);
+                for (let i = 0; i < 10; i++) {
+                    for (let j = 0; i >= j; j++) {
+                        let printPattern = $('<span></span>').text('*');
+                        $(printPattern).css({ 'margin-right': '2rem' });
+                        $(myContainer).append(printPattern);
+                    }
+                    let brk = $('<br>');
+                    $(myContainer).append(brk);
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
